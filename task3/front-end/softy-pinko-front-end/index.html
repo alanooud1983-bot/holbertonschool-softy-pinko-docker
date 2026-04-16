@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Softy Pinko</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            text-align: center;
+            padding-top: 100px;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic content from API -->
+    <h1 id="dynamic-content"></h1>
+
+    <!-- Static content -->
+    <h1>
+        We provide the best <strong>strategy</strong><br>
+        to grow up your <strong>business</strong>
+    </h1>
+
+    <!-- Script to call API -->
+    <script>
+        $(function() {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:5252/api/hello",
+                success: function(data) {
+                    console.log(data);
+                    $('#dynamic-content').text(data);
+                },
+                error: function() {
+                    $('#dynamic-content').text("Error connecting to API");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
